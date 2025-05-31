@@ -1,95 +1,55 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import CategoriesList from '@/components/posts/CategoriesList.component';
+import EditorsPickPosts from '@/components/posts/EditorsPickPosts.component';
+import FeaturedPostCard from '@/components/posts/FeaturedPostCard.component';
+import PopularCategories from '@/components/posts/PopularCategories.component';
+import PopularPosts from '@/components/posts/PopularPosts.component';
+import RecentPosts from '@/components/posts/RecentPosts.component';
+import { SITE_NAME } from '@/constants';
+import { searchParamsType } from '@/types/custom.types';
+import { Metadata } from 'next';
+import { Col, Container, Row } from 'react-bootstrap';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+export const metadata: Metadata = {
+	title: SITE_NAME,
+	description:
+		'Lamablog is your digital space to discover fresh ideas, personal reflections, and inspiring content about culture, lifestyle, technology, and more. Explore, learn, and connect!',
+};
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+export default async function HomePage({
+	searchParams,
+}: {
+	searchParams: Promise<searchParamsType>;
+}): Promise<React.JSX.Element> {
+	const { page } = await searchParams;
+
+	return (
+		<Container>
+			<section className='mb-5'>
+				<h1 className='display-3 pt-3 pb-5 fw-semibold text-xs-center'>
+					<b className='fw-bold'>Hey, lama dev here!</b> Discover my stories and
+					creative ideas.
+				</h1>
+				<FeaturedPostCard />
+			</section>
+			<PopularCategories />
+			<Row>
+				<Col
+					sm={8}
+					md={7}
+					lg={8}
+					>
+					<RecentPosts rawPage={page} />
+				</Col>
+				<Col
+					sm={4}
+					md={5}
+					lg={4}
+				>
+					<PopularPosts />
+					<CategoriesList />
+					<EditorsPickPosts />
+				</Col>
+			</Row>
+		</Container>
+	);
 }
