@@ -25,3 +25,27 @@ export function isDarkColor(rgbColor: RGBColor): boolean {
 
 	return darkContrast > lightContrast;
 }
+
+export function testId(testId: string): Record<string, string> {
+	return process.env.NODE_ENV === 'test' ? { 'data-testid': testId } : {};
+}
+
+export function imageToBase64(file: File): Promise<string> {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+
+		reader.onloadend = () => {
+			if (reader.result) {
+				resolve(reader.result as string);
+			} else {
+				throw new Error('No se pudo leer el archivo');
+			}
+		};
+
+		reader.onerror = () => {
+			reject(new Error('Error al leer el archivo'));
+		};
+
+		reader.readAsDataURL(file);
+	});
+}

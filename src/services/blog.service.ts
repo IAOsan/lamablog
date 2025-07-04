@@ -130,7 +130,9 @@ const service = {
 
 		return !post ? null : { id: postId, ...post };
 	},
-	async getCategoryById(categoryId: IPostCategory['id']): Promise<IPostCategory | null> {
+	async getCategoryById(
+		categoryId: IPostCategory['id']
+	): Promise<IPostCategory | null> {
 		const url = `${CATEGORIES_ENDPOINT.split('.json')[0]}/${categoryId}.json`;
 		const { data, error } = await httpService.get(url);
 

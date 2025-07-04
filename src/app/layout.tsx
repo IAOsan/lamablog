@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body>
+			<body className='min-vh-100 d-flex flex-column'>
 				<PrimaryNavbar />
-				<main className='py-5'>{children}</main>
+				<main className='py-5 flex-fill'>{children}</main>
 				<Footer />
 			</body>
 		</html>

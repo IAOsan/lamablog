@@ -22,7 +22,7 @@ function get(url: string) {
 	return fetchData(url);
 }
 
-function post(url: string, options?: RequestInit) {
+function post(url: string, options?: Omit<RequestInit, 'method'>) {
 	return fetchData(url, {
 		method: 'POST',
 		headers: {

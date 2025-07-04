@@ -59,7 +59,7 @@ const social = [
 
 function Footer(): React.JSX.Element {
 	return (
-		<footer className='py-4'>
+		<footer className='py-3'>
 			<Container>
 				<Row>
 					<Col

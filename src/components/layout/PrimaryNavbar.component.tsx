@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import {
 	Container,
@@ -6,9 +7,8 @@ import {
 	NavbarBrand,
 	NavbarCollapse,
 	NavbarToggle,
-	NavLink,
 } from 'react-bootstrap';
-import AuthButton from '../auth/AuthButton.component';
+import AuthSection from '../auth/AuthSection.component';
 import SocialList from '../common/SocialList.component';
 
 const NAVBAR_LINKS = [
@@ -44,14 +44,15 @@ export function PrimaryNavbar(): React.JSX.Element {
 					</NavbarBrand>
 					<Nav className='ms-auto'>
 						{NAVBAR_LINKS.map((l) => (
-							<NavLink
+							<Link
+								className='nav-link'
 								key={l.path}
 								href={l.path}
 							>
 								{l.label}
-							</NavLink>
+							</Link>
 						))}
-						<AuthButton />
+						<AuthSection />
 					</Nav>
 				</NavbarCollapse>
 			</Container>

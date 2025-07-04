@@ -1,7 +1,8 @@
 'use client';
 
 import { Button, NavItem } from 'react-bootstrap';
-import { signOut } from "next-auth/react";
+import { signOut } from 'next-auth/react';
+import { testId } from '@/utils';
 
 function LogoutButton(): React.JSX.Element {
 	async function handleSignout(): Promise<void> {
@@ -13,10 +14,14 @@ function LogoutButton(): React.JSX.Element {
 	}
 
 	return (
-		<NavItem className='px-2'>
+		<NavItem
+			className='px-2'
+			{...testId('logout-btn')}
+		>
 			<Button
 				onClick={handleSignout}
 				variant='outline-primary'
+				type='button'
 			>
 				Logout
 			</Button>
