@@ -31,7 +31,7 @@ async function SinglePostPage({
 							lg={7}
 							xl={6}
 							className='d-flex flex-column justify-content-center order-2 order-lg-1'
-							>
+						>
 							<h1 className='display-4 fw-normal mb-5'>
 								<b>{post.title}</b>
 							</h1>

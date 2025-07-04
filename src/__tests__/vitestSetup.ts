@@ -1,13 +1,8 @@
 import '@testing-library/jest-dom/vitest';
-import { cleanup } from '@testing-library/react';
-import { beforeAll, afterEach, afterAll } from 'vitest';
-import { server } from './mockServer';
+import { afterEach, vi } from 'vitest';
+import { cleanup } from './testUtils';
 
 afterEach(() => {
-    cleanup();
+	cleanup();
+	vi.restoreAllMocks();
 });
-
-// Establish API mocking before all tests
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());

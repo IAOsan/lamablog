@@ -43,6 +43,10 @@ export type SuccessResponseType<T> = {
 	[key: string]: Omit<T, 'id'>;
 };
 
+export type NewPostErrorType = Partial<
+	Record<keyof z.infer<typeof newPostSchema>, string>
+>;
+
 export interface IComment {
 	id: string;
 	datetime: string;
@@ -57,9 +61,28 @@ export interface IComment {
 }
 
 export type IconNameType =
+	| 'heading-1'
+	| 'heading-2'
+	| 'heading-3'
+	| 'heading-4'
+	| 'heading-5'
+	| 'heading-6'
 	| 'instagram'
 	| 'tiktok'
 	| 'facebook'
 	| 'youtube'
 	| 'github'
-	| 'google';
+	| 'google'
+	| 'bold'
+	| 'unordered-list'
+	| 'ordered-list'
+	| 'image-solid'
+	| 'preview-solid'
+	| 'strikethrough'
+	| 'image-outline'
+	| 'preview-outline'
+	| 'checklist'
+	| 'code'
+	| 'italic'
+	| 'quote'
+	| 'link';

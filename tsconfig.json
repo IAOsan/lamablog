@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {
+	"compilerOptions": {
 		"target": "ES2017",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -23,6 +23,12 @@
 		},
 		"types": ["vitest/globals", "@testing-library/jest-dom"]
 	},
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "./src/__tests__/vitestSetup.ts"],
-  "exclude": ["node_modules"]
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"./src/__tests__/vitestSetup.ts"
+	],
+	"exclude": ["node_modules"]
 }
